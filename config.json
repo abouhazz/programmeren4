@@ -1,0 +1,8 @@
+{
+    "secretkey":  "MyFirstServerSuperSecretKey-123454321AbCd-",
+    "dbUsername" : "student_user",
+    "dbPassword": "secret",
+    "dbSchema" :  "studentenhuis",
+    "dbServer" :  "localhost",
+    "webPort" :   "8080"
+}
