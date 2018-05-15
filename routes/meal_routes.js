@@ -9,13 +9,9 @@ router.post('/api/studentenhuis/:huisId/maaltijd', maaltijd_controllers.createMa
 //verkrijg een maaltijd
 router.get('/api/studentenhuis/:huisId/maaltijd', maaltijd_controllers.getMaaltijd);
 
-//verkrijg een maaltijd aan de hand van zijn id
+
 router.get('/api/studentenhuis/:huisId/maaltijd/:maaltijdId', maaltijd_controllers.getMaaltijdById);
-
-//voer een maaltijd in
 router.put('/api/studentenhuis/:huisId/maaltijd/:maaltijdId', maaltijd_controllers.putMaaltijd);
-
-//Verwijder een maaltijd
 router.delete('/api/studentenhuis/:huisId/maaltijd/:maaltijdId', maaltijd_controllers.deleteMaaltijd);
 
 //export router
