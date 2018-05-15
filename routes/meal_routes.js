@@ -1,17 +1,14 @@
-//imports
-let express = require('express');
-let router = express.Router();
-let maaltijd_controllers = require('../controllers/maaltijd_controllers');
 
-router.post('/api/studentenhuis/:huisId/maaltijd', maaltijd_controllers.createMaaltijd);
-router.get('/api/studentenhuis/:huisId/maaltijd', maaltijd_controllers.getMaaltijd);
-<<<<<<< HEAD
+let routes = require('express').Router()
+let maaltijd_controllers = require('../controller/meal_controller')
+
+// hier schrijven we router endpoints
+routes.post('/api/studentenhuis/:huisId/maaltijd', maaltijd_controllers.createMaaltijd);
+routes.get('/api/studentenhuis/:huisId/maaltijd', maaltijd_controllers.getMaaltijd);
+
+routes.get('/api/studentenhuis/:huisId/maaltijd/:maaltijdId', maaltijd_controllers.getMaaltijdById);
+routes.put('/api/studentenhuis/:huisId/maaltijd/:maaltijdId', maaltijd_controllers.putMaaltijd);
+routes.delete('/api/studentenhuis/:huisId/maaltijd/:maaltijdId', maaltijd_controllers.deleteMaaltijd);
 
 
-=======
->>>>>>> a33b2c75c7cc8666b227a11605a59fa68326016f
-router.get('/api/studentenhuis/:huisId/maaltijd/:maaltijdId', maaltijd_controllers.getMaaltijdById);
-router.put('/api/studentenhuis/:huisId/maaltijd/:maaltijdId', maaltijd_controllers.putMaaltijd);
-router.delete('/api/studentenhuis/:huisId/maaltijd/:maaltijdId', maaltijd_controllers.deleteMaaltijd);
-//wegschrijven
-module.exports = router;
+module.exports = routes;
