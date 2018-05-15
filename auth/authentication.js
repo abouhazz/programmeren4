@@ -9,38 +9,54 @@ const jwt = require('jwt-simple');
 //
 // Encode (van username naar token)
 //
-function encodeToken(username) {
-    const playload = {
+function encodeToken(userID, userEmail) {
+
+    //payload maken
+
+
+    const payload = {
+
+        // kiezen hoe lang de waardes bewaard mogen blijven
         exp: moment().add(10, 'days').unix(),
         iat: moment().unix(),
-        sub: username
+        sub: userID,
+        email: userEmail
     };
-    return jwt.encode(playload, settings.secretkey);
+
+    //encode het
+
+    const encode = jwt.encode(payload, settings.secretkey);
+    console.log(encode);
+
+
+    return encode;
 }
 
-//
-// Decode (van token naar username)
-//
-function decodeToken(token, cb) {
+
+
+// decode de code vervolgens
+function decodeToken(token, callback) {
 
     try {
-        const payload = jwt.decode(token, settings.secretkey);
 
-        // Check if the token has expired. To do: Trigger issue in db ..
+
+        const payload = jwt.decode(token, settings.secretkey);
         const now = moment().unix();
 
-        // Check if the token has expired
         if (now > payload.exp) {
-            console.log('Token has expired.');
+            console.log("Token has expired");
         }
 
-        // Return
-        cb(null, payload);
 
-    } catch(err) {
-        cb(err, null);
+        callback(null, payload);
+
+    } catch(error) {
+
+        callback(error, null);
     }
+
 }
+
 
 module.exports = {
     encodeToken,
