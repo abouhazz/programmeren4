@@ -6,21 +6,22 @@ const settings = require('../config.json');
 const moment = require('moment');
 const jwt = require('jwt-simple');
 
+
 //
 // Encode (van username naar token)
 //
-function encodeToken(username) {
+function encodeToken(U_ID, U_email) {
     const playload = {
         exp: moment().add(10, 'days').unix(),
         iat: moment().unix(),
-        sub: username
+        sub: U_ID,
+        email: U_email,
     };
     return jwt.encode(playload, settings.secretkey);
 }
 
-//
-// Decode (van token naar username)
-//
+
+
 function decodeToken(token, cb) {
 
     try {
