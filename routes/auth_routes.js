@@ -1,8 +1,11 @@
-const express = require('express')
-const controller = require('../controllers/auth_controller')
-const routes = express.Router();
+//
+// Authentication routes
+//
+const routes = require('express').Router();
+const AuthController = require('../controller/auth_controller')
 
-routes.post('/login', controller.login)
-routes.post('/register', controller.register)
+// The router endpoints that we provide
+routes.post('/login', AuthController.login)
+routes.post('/register', AuthController.register)
 
 module.exports = routes
