@@ -1,6 +1,6 @@
 let express = require('express');
 let router = express.Router();
-let studentenhuis_controllers = require('../controllers/studentenhuis_controllers');
+let studentenhuis_controllers = require('../controller/studentenhuis_controllers');
 let auth = require("../auth/authentication");
 
 router.post('/api/studentenhuis', studentenhuis_controllers.createStudentenhuis);

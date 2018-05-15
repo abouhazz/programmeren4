@@ -1,6 +1,6 @@
 
 let routes = require('express').Router()
-let maaltijd_controllers = require('../controller/meal_controller')
+let maaltijd_controllers = require('../controller/maaltijd_controller')
 
 // hier schrijven we router endpoints
 routes.post('/api/studentenhuis/:huisId/maaltijd', maaltijd_controllers.createMaaltijd);

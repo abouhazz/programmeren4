@@ -1,11 +1,12 @@
-class Meal {
+class Maaltijd {
 
-    constructor(ID, Naam, Beschrijving, Ingredienten, Allergie){
+    constructor(ID, Naam, Beschrijving, Ingredienten, Allergie, Prijs){
         this.M_ID = ID;
         this.M_Naam = Naam;
         this.M_Beschrijving = Beschrijving;
         this.M_Ingredienten = Ingredienten;
         this.M_Allergie = Allergie;
+        this._Prijs = Prijs;
 
     }
 
@@ -26,9 +27,14 @@ class Meal {
         return this.M_Ingredienten;
     }
 
-    get Allergie() {
+    getAllergie() {
         return this.M_Allergie;
+    }
+
+
+    getPrijs() {
+        return this._Prijs;
     }
 }
 
-module.exports = Meal;
+module.exports = Maaltijd;

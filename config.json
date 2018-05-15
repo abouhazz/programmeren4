@@ -1,6 +1,6 @@
 {
     "secretkey":  "MyFirstServerSuperSecretKey-123454321AbCd-",
-    "dbUsername" : "student_user",
+    "dbUsername" : "studenth_user",
     "dbPassword": "secret",
     "dbSchema" :  "studentenhuis",
     "dbServer" :  "localhost",
