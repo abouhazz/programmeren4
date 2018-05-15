@@ -1,14 +1,14 @@
 
 let routes = require('express').Router()
-let maaltijd_controllers = require('../controller/maaltijd_controller')
+let maaltijd_controller = require('../controller/maaltijd_controller')
 
 // hier schrijven we router endpoints
-routes.post('/api/studentenhuis/:huisId/maaltijd', maaltijd_controllers.createMaaltijd);
-routes.get('/api/studentenhuis/:huisId/maaltijd', maaltijd_controllers.getMaaltijd);
+routes.post('/api/studentenhuis/:huisId/maaltijd', maaltijd_controller.createmaaltijd);
+routes.get('/api/studentenhuis/:huisId/maaltijd', maaltijd_controller.getmaaltijd);
 
-routes.get('/api/studentenhuis/:huisId/maaltijd/:maaltijdId', maaltijd_controllers.getMaaltijdById);
-routes.put('/api/studentenhuis/:huisId/maaltijd/:maaltijdId', maaltijd_controllers.putMaaltijd);
-routes.delete('/api/studentenhuis/:huisId/maaltijd/:maaltijdId', maaltijd_controllers.deleteMaaltijd);
+routes.get('/api/studentenhuis/:huisId/maaltijd/:maaltijdId', maaltijd_controller.getmaaltijdById);
+routes.put('/api/studentenhuis/:huisId/maaltijd/:maaltijdId', maaltijd_controller.putmaaltijd);
+routes.delete('/api/studentenhuis/:huisId/maaltijd/:maaltijdId', maaltijd_controller.deletemaaltijd);
 
 
 module.exports = routes;

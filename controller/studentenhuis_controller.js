@@ -1,6 +1,6 @@
 let express = require('express');
 let db = require('../Database/MySqlConnection');
-let studentenhuis = require('../classes/studentenhuis');
+let studentenhuis = require('../model/studentenhuis');
 let assert = require('assert');
 let error = require('../model/ApiError');
 module.exports = {
