@@ -76,5 +76,5 @@ module.exports = {
             };
             response.status(414).json(json);
         }
-    }, 
+    },
 };
