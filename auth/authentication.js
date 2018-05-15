@@ -14,8 +14,7 @@ function encodeToken(U_ID, U_email) {
     const playload = {
         exp: moment().add(10, 'days').unix(),
         iat: moment().unix(),
-        sub: U_ID,
-        email: U_email,
+        email: _email,
     };
     return jwt.encode(playload, settings.secretkey);
 }
