@@ -1,7 +1,10 @@
 const express = require('express')
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
-const User_routes = require('./routes/User_routes')
+const user_routes = require('./routes/user_routes')
+const student_routes = require('./routes/student_routes')
+const meal_routes = require('./routes/meal_routes')
+const huis_routes = require('./routes/huis_routes')
 const ApiError = require('./model/ApiError')
 const mysql = require('mysql')
 
@@ -17,7 +20,7 @@ app.use('*', function(req, res, next){
     next()
 })
 
-app.use('/api', User_routes)
+app.use('/api', user_routes)
 
 app.get('/api/greeting', function (req, res, next) {
     let mygreeting = {
@@ -44,7 +47,7 @@ app.use((err, req, res, next) => {
     res.status(404).json(error).end()
 })
 
-const port = process.env.PORT || 8080
+    const port = process.env.PORT || 8080;
 
 app.listen(port, () => {
     console.log('De server draait op port ' + port)

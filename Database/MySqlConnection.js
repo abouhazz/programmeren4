@@ -4,8 +4,8 @@ const config = require('../config');
 
 let db = mysql.createConnection( {
     host: 'localhost',
-    user: 'student_user',
-    password: 'secret',
+    user: 'root',
+    password: '',
     database: 'studentenhuis',
     insecureAuth : true
 });
