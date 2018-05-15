@@ -1,32 +1,33 @@
-// import settings
-
 const auth = require('../auth/authentication');
-const tijd = require("moment");
-
+const moment = require("moment");
+const db = require('../Database/MySqlConnection');
 module.exports = {
 
     //token aanmaken
     validateToken(req, res, next) {
-        console.log('validateToken called');
+        console.log('validateToken was called');
 
         //token ophalen
         const token = request.header("x-access-token") || "unable to access token";
 
-        auth.decodeToken(token, (error, payload) => {
 
-            if(error)   {
+
+
+        //token ontmantelen
+        auth.decodeToken(token, (error, payload) => {
+            if(error)      {
                 //afgekeurd
                 const error = new ApiError(error.message || error, 401);
                 next(error);
 
-            } else{
+            } else    {
                 //goedgekeurd
-                console.log("Token approved! payload: \r\n");
+                console.log("Token approved! payload: ");
                 console.dir(payload);
                 request.user = payload.sub;
                 next();
-            }
-        })
+              }
+          })
     },
 
     //login initaliseren
@@ -35,7 +36,7 @@ module.exports = {
         const email = request.body.email;
         const password = request.body.password;
 
-        console.log("received: " + email + ", "+ password);
+        console.log("Login contains: " + email + ", "+ password);
     },
 
     //register initaliseren
@@ -59,14 +60,14 @@ module.exports = {
             response.status(200).json(json);
         }
 
-        if(false)    {
+
             const json = {
                 "message": "Token is invalid!",
                 "code": 401,
                 "datetime": moment()
             };
             response.status(401).json(json);
-        }
+
 
         else{
             const json = {
