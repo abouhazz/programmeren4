@@ -1,3 +1,4 @@
+<<<<<<< HEAD:routes/maaltijd_routes.js
 
 let routes = require('express').Router()
 let maaltijd_controllers = require('../controller/maaltijd_controller')
@@ -12,3 +13,5 @@ routes.delete('/api/studentenhuis/:huisId/maaltijd/:maaltijdId', maaltijd_contro
 
 
 module.exports = routes;
+=======
+>>>>>>> 3d54c7177610cfbb9f76240cf31cafd95b41a6ca:routes/meal_routes.js
