@@ -1,22 +1,22 @@
 class Student {
 
     constructor(UserID, StudentenhuisID, MaaltijdID){
-        this._UserID = UserID;
-        this._StudentenhuisID = StudentenhuisID;
-        this._MaaltijdID = MaaltijdID;
+        this.S_UserID = UserID;
+        this.S_StudentenhuisID = StudentenhuisID;
+        this.S_MaaltijdID = MaaltijdID;
     }
 
 
     get UserID() {
-        return this._UserID;
+        return this.S_UserID;
     }
 
     get StudentenhuisID() {
-        return this._StudentenhuisID;
+        return this.S_StudentenhuisID;
     }
 
     get MaaltijdID() {
-        return this._MaaltijdID;
+        return this.S_MaaltijdID;
     }
 }
 

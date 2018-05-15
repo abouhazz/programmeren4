@@ -1,27 +1,27 @@
 class Huis {
 
     constructor(ID, Naam, Adres, UserID){
-        this._ID = ID;
-        this._Naam = Naam;
-        this._Adres = Adres;
-        this._UserID = UserID;
+        this.H_ID = ID;
+        this.H_Naam = Naam;
+        this.H_Adres = Adres;
+        this.H_UserID = UserID;
     }
 
 
     getID() {
-        return this._ID;
+        return this.H_ID;
     }
 
     getNaam() {
-        return this._Naam;
+        return this.H_Naam;
     }
 
     getAdres() {
-        return this._Adres;
+        return this.H_Adres;
     }
 
     getUserID() {
-        return this._UserID;
+        return this.H_UserID;
     }
 }
 

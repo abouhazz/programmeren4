@@ -1,32 +1,32 @@
 class User {
 
     constructor(ID, Voornaam, Achternaam, email, password){
-        this._ID = ID;
-        this._Voornaam = Voornaam;
-        this._Achternaam = Achternaam;
-        this._email = email;
-        this._password = password;
+        this.U_ID = ID;
+        this.U_Voornaam = Voornaam;
+        this.U_Achternaam = Achternaam;
+        this.U_email = email;
+        this.U_password = password;
     }
 
 
     getID() {
-        return this._ID;
+        return this.U_ID;
     }
 
     getVoornaam() {
-        return this._Voornaam;
+        return this.U_Voornaam;
     }
 
     getAchternaam() {
-        return this._Achternaam;
+        return this.U_Achternaam;
     }
 
     getemail() {
-        return this._email;
+        return this.U_email;
     }
 
     getpassword() {
-        return this._password;
+        return this.U_password;
     }
 }
 module.exports = User;

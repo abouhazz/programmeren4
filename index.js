@@ -1,7 +1,7 @@
 const express = require('express')
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
-const person_routes = require('./routes/person_routes')
+const User_routes = require('./routes/User_routes')
 const ApiError = require('./model/ApiError')
 const mysql = require('mysql')
 
@@ -17,7 +17,7 @@ app.use('*', function(req, res, next){
     next()
 })
 
-app.use('/api', person_routes)
+app.use('/api', User_routes)
 
 app.get('/api/greeting', function (req, res, next) {
     let mygreeting = {
