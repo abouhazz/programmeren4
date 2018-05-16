@@ -18,7 +18,7 @@ function encodeToken(username) {
     return jwt.encode(playload, settings.secretkey);
 }
 
-//
+//  
 // Decode (van token naar username)
 //
 function decodeToken(token, cb) {
