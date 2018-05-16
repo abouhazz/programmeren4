@@ -1,9 +1,9 @@
 /**
- * Testcases aimed at testing the authentication process. 
+ * Testcases aimed at testing the authentication process.
  */
 const chai = require('chai')
 const chaiHttp = require('chai-http')
-const server = require('../index')
+const server = require('../server')
 
 chai.should()
 chai.use(chaiHttp)
@@ -18,7 +18,7 @@ describe('Registration', () => {
         // Hier schrijf je jouw testcase.
         //
 
-        // Tip: deze test levert een token op. Dat token gebruik je in 
+        // Tip: deze test levert een token op. Dat token gebruik je in
         // andere testcases voor beveiligde routes door het hier te exporteren
         // en in andere testcases te importeren via require.
         // validToken = res.body.token
