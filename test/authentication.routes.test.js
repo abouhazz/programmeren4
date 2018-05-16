@@ -63,6 +63,7 @@ describe('Registration', () => {
             .get("/api/register")
             .end((err, res)=>{
             res.should.have.status(412)
+                res.body.should.have.property("error")
                 done()
         })
     })
@@ -72,6 +73,7 @@ describe('Registration', () => {
             .post('/api/register')
             .end((err, res)=>{
                 res.should.have.status(412)
+                res.body.should.have.property("error")
                 done()
                 })
 
@@ -88,6 +90,7 @@ describe('Registration', () => {
                 })
                 .end((err, res)=>{
                     res.should.have.status(412)
+                    res.body.should.have.property("error")
                     done()
                     })
 
@@ -104,6 +107,7 @@ describe('Registration', () => {
                 })
                 .end((err, res)=>{
                     res.should.have.status(401)
+                    res.body.should.have.property("error")
                     done()
                     })
 
@@ -120,6 +124,7 @@ describe('Registration', () => {
                 })
                 .end((err, res)=>{
                     res.should.have.status(412)
+                    res.body.should.have.property("error")
                     done()
                     })
 
@@ -136,6 +141,7 @@ describe('Registration', () => {
                 })
                 .end((err, res)=>{
                     res.should.have.status(412)
+                    res.body.should.have.property("error")
                     done()
                     })
 
@@ -152,6 +158,7 @@ describe('Registration', () => {
                 })
             .end((err, res)=>{
                     res.should.have.status(412)
+                res.body.should.have.property("error")
                 done()
                     })
 
@@ -171,8 +178,6 @@ describe('Login', () => {
             .end((err, res)=>{
                     res.should.have.status(200)
                 const response = res.body
-                response.should.have.property('token').which.is.an('string')
-                response.should.have.property('email').which.is.an('string')
                 validToken = res.body.token
                 done()
                 })
@@ -188,6 +193,7 @@ describe('Login', () => {
             })
             .end((err, res)=>{
                 res.should.have.status(412)
+                res.body.should.have.property("error")
                 done()
                 })
 
@@ -202,6 +208,7 @@ describe('Login', () => {
             })
             .end((err, res)=>{
                 res.should.have.status(412)
+                res.body.should.have.property("error")
                 done()
                 })
 
@@ -216,6 +223,7 @@ describe('Login', () => {
             })
             .end((err, res)=>{
                 res.should.have.status(412)
+                res.body.should.have.property("error")
                 done()
                })
 
