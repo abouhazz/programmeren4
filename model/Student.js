@@ -9,6 +9,7 @@ class Student {
 
     get UserID() {
         return this._UserID;
+
     }
 
     get StudentenhuisID() {
