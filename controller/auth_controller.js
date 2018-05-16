@@ -107,7 +107,7 @@ module.exports = {
         }
         if (rows[0]) {
             console.log("Email is already registered!");
-            response.status(401).json(error);
+            response.status(412).json(error);
         }
         //nieuwe user aanmaken!
         else {

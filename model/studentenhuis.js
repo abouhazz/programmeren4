@@ -1,6 +1,6 @@
 class Studentenhuis {
 
-    constructor(Naam, Adres){
+    constructor(Naam, Adres) {
         this._Naam = Naam;
         this._Adres = Adres;
     }
@@ -13,5 +13,5 @@ class Studentenhuis {
     get Adres() {
         return this._Adres;
     }
-
+}
     module.exports = Studentenhuis;
