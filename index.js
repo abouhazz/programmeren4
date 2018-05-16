@@ -42,7 +42,7 @@ app.use((err, req, res, next) => {
 
     const error = new ApiError(err.toString(), 404)
 
-    res.status(404).json(error).end()
+    res.status(412).json(error).end()
 })
 
     const port = process.env.PORT || 8080;

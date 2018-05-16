@@ -8,10 +8,14 @@ const server = require('../index')
 chai.should()
 chai.use(chaiHttp)
 
-let firstname = "firstnametest"
-let lastname = "lastnametest"
-let email = "test@hotmail.com"
-let password = "welkom1"
+
+
+/*
+let ""firstname"test" = """firstname"test"test"
+let "lastnametest" = ""lastnametest"test"
+let "test@hotmail.com" = "test@hotmail.com"
+let "welkom1" = "welkom1"
+*/
 
 
 
@@ -22,15 +26,18 @@ let validToken
 describe('Registration', () => {
     var query = {
         sql:"INSERT INTO 'USER'(Voornaam, Achternaam, Email, Password)" +
-        "VALUES " + "(\'" + firstname + "\'," + "\'" + lastname +"\'," + "\'" + email +"\'," +
-        "\'" + password +"\');"
+        "VALUES " + "(\'" + "firstnametest" + "\'," + "\'" + "lastnametest" +"\'," + "\'" + "test@hotmail.com" +"\'," +
+        "\'" + "welkom1" +"\');"
     }
 
 
     it('should return a token when providing valid information', (done) => {
-        chai.request(server).post("api/login").send(
-            firstname, lastname, email, password).end((err,res)=>{res.should.have.status(200)
-            res.body.should.have.property("error")
+        chai.request(server).post('/api/login').send({
+            "firstname": "test",
+            "lastname" : "lastnametest",
+            "email" : "test@hotmail.com",
+            "password": "welkom1"}).end((err,res)=>{res.should.have.status(200)
+
             })
 
         //
@@ -53,96 +60,101 @@ describe('Registration', () => {
 
     it('should return an error on GET request', (done) => {
         chai.request(server)
-            .get("api/register")
+            .get("/api/register")
             .end((err, res)=>{
-            res.should.have.status(404)
-            res.body.should.have.property("error")
+            res.should.have.status(412)
+                done()
         })
-        done()
     })
 
     it('should throw an error when the user already exists', (done) => {
         chai.request(server)
-            .get("api/login")
+            .post('/api/register')
             .end((err, res)=>{
-                res.should.have.status(401)
-                res.body.should.have.property("error")})
-        done()
+                res.should.have.status(412)
+                done()
+                })
+
     })
 
     it('should throw an error when no firstname is provided', (done) => {
         chai.request(server)
-            .get("api/register")
+            .post("/api/register")
                 .send({
                     "firstname" : "",
-                    "lastname" : lastname,
-                    "email" : email,
-                    "password": password
+                    "lastname" : "lastnametest",
+                    "email"  : "test@hotmail.com",
+                    "password": "welkom1"
                 })
                 .end((err, res)=>{
                     res.should.have.status(412)
-                    res.body.should.have.property("error")})
-        done()
+                    done()
+                    })
+
     })
 
     it('should throw an error when firstname is shorter than 2 chars', (done) => {
         chai.request(server)
-            .get("api/register")
+            .post("/api/register")
                 .send({
                     "firstname" : "a",
-                    "lastname" : lastname,
-                    "email" : email,
-                    "password": password
+                    "lastname" : "lastnametest",
+                    "email"  : "test@hotmail.com",
+                    "password": "welkom1"
                 })
                 .end((err, res)=>{
                     res.should.have.status(401)
-                    res.body.should.have.property("error")})
-        done()
+                    done()
+                    })
+
     })
 
     it('should throw an error when no lastname is provided', (done) => {
         chai.request(server)
-            .get("api/register")
+            .post("/api/register")
                 .send({
-                    "firstname" : firstname,
+                    "firstname" : "firstnametest",
                     "lastname" : "",
-                    "email" : email,
-                    "password": password
+                    "email" : "test@hotmail.com",
+                    "password": "welkom1"
                 })
                 .end((err, res)=>{
                     res.should.have.status(412)
-                    res.body.should.have.property("error")})
-        done()
+                    done()
+                    })
+
     })
 
     it('should throw an error when lastname is shorter than 2 chars', (done) => {
         chai.request(server)
-            .get("api/register")
+            .post("/api/register")
                 .send({
-                    "firstname" : firstname,
+                    "firstname" : "firstnametest",
                     "lastname" : "a",
-                    "email" : email,
-                    "password": password
+                    "email" : "test@hotmail.com",
+                    "password": "welkom1"
                 })
                 .end((err, res)=>{
                     res.should.have.status(412)
-                    res.body.should.have.property("error")})
-        done()
+                    done()
+                    })
+
     })
 
     it('should throw an error when email is invalid', (done) => {
         chai.request(server)
-            .get("api/register")
-                .send({
-                    "firstname" : firstname,
-                    "lastname" : lastname,
+            .post("/api/register")
+            .send({
+                    "firstname" : "firstnametest",
+                    "lastname" : "lastnametest",
                     "email" : "test",
-                    "password": password
+                    "password": "welkom1"
                 })
-                .end((err, res)=>{
+            .end((err, res)=>{
                     res.should.have.status(412)
-                    res.body.should.have.property("error")})
-        done()
+                done()
+                    })
+
     })
 
 })
@@ -150,58 +162,63 @@ describe('Registration', () => {
 describe('Login', () => {
 
     it('should return a token when providing valid information', (done) => {
-        hai.request(server)
-            .post("api/login")
+        chai.request(server)
+            .post('/api/login')
             .send({
-                    "email": email,
-                    "password": password
+                    "email": "test@hotmail.com",
+                    "password": "welkom1"
                 })
             .end((err, res)=>{
                     res.should.have.status(200)
-                    res.body.should.have.property("error")
-                    validToken = res.body.token
-
+                const response = res.body
+                response.should.have.property('token').which.is.an('string')
+                response.should.have.property('email').which.is.an('string')
+                validToken = res.body.token
+                done()
                 })
-        done()
+
     })
 
     it('should throw an error when email does not exist', (done) => {
         chai.request(server)
-            .post("api/login")
+            .post('/api/login')
             .send({
 
-                "password": password
+                "password": "welkom1"
             })
             .end((err, res)=>{
                 res.should.have.status(412)
-                res.body.should.have.property("error")})
-        done()
+                done()
+                })
+
     })
 
     it('should throw an error when email exists but password is invalid', (done) => {
         chai.request(server)
-            .post("api/login")
+            .post('/api/login')
             .send({
-                "email" : email,
+                "email" : "test@hotmail.com",
                 "password": "test"
             })
             .end((err, res)=>{
                 res.should.have.status(412)
-                res.body.should.have.property("error")})
-        done()
+                done()
+                })
+
     })
 
     it('should throw an error when using an invalid email', (done) => {
         chai.request(server)
-            .post("api/login")
+            .post('/api/login')
             .send({
                 "email" : "test",
-                "password": password
+                "password": "welkom1"
             })
             .end((err, res)=>{
                 res.should.have.status(412)
-                res.body.should.have.property("error")})
-        done()
+                done()
+               })
+
     })
 
 

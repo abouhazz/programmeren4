@@ -14,9 +14,7 @@ class Studentenhuis {
         return this._Adres;
     }
 }
-<<<<<<< HEAD
 
-    module.exports = Studentenhuis;
-=======
-    module.exports = Studentenhuis;
->>>>>>> ebddf5c500942bb1f43d5a202ba2a237bc269d06
+
+    module.exports = Studentenhuis
+
