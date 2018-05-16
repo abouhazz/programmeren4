@@ -13,7 +13,6 @@ module.exports = {
 // token mag niet empty zijn
 
 
-
         if(token.includes("")) {
 
 
@@ -24,6 +23,7 @@ module.exports = {
             };
             response.status(401).json(json);
         }
+
 
 
         //token ontmantelen
@@ -91,13 +91,5 @@ module.exports = {
 
 
 
-        else{
-            const json = {
-                "message": "Request body is not appearent or bugged",
-                "code": 412,
-                "datetime": moment()
-            };
-            response.status(414).json(json);
-        }
     },
 };
