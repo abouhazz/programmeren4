@@ -1,25 +1,29 @@
-/**
- * Created by dkroeske on 25/04/2018.
- */
 
 const settings = require('../config.json');
 const moment = require('moment');
 const jwt = require('jwt-simple');
 
+
 //
 // Encode (van username naar token)
 //
-function encodeToken(username) {
+function encodeToken(email) {
     const playload = {
         exp: moment().add(10, 'days').unix(),
         iat: moment().unix(),
-        sub: username
+        sub: email
     };
     return jwt.encode(playload, settings.secretkey);
 }
+<<<<<<< HEAD
 //
 // Decode (van token naar username)
 //
+=======
+
+
+
+>>>>>>> developer
 function decodeToken(token, cb) {
 
     try {
@@ -45,5 +49,6 @@ module.exports = {
     encodeToken,
     decodeToken
 };
+
 
 
