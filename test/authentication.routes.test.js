@@ -3,26 +3,34 @@
  */
 const chai = require('chai')
 const chaiHttp = require('chai-http')
-const server = require('../server')
+const server = require('../index')
 
 chai.should()
 chai.use(chaiHttp)
 
-const firstname = "firstnametest"
-const lastname = "lastnametest"
-const email = "test@hotmail.com"
-const password = "welkom1"
+let firstname = "firstnametest"
+let lastname = "lastnametest"
+let email = "test@hotmail.com"
+let password = "welkom1"
+
+
 
 // After successful registration we have a valid token. We export this token
 // for usage in other testcases that require login.
 let validToken
 
 describe('Registration', () => {
+    var query = {
+        sql:"INSERT INTO 'USER'(Voornaam, Achternaam, Email, Password)" +
+        "VALUES " + "(\'" + firstname + "\'," + "\'" + lastname +"\'," + "\'" + email +"\'," +
+        "\'" + password +"\');"
+    }
+
+
     it('should return a token when providing valid information', (done) => {
         chai.request(server).post("api/login").send(
-            firstname, lastname, email, password).end((err,res)=>{
-                res.should.have.status(200)
-            res.body.should.be.a("token")
+            firstname, lastname, email, password).end((err,res)=>{res.should.have.status(200)
+            res.body.should.have.property("error")
             })
 
         //
@@ -36,14 +44,12 @@ describe('Registration', () => {
         // module.exports = {
         //     token: validToken
         // }
+
+
         done()
     })
 
-    let query = {
-        sql:"INSERT INTO 'USER'(Voornaam, Achternaam, Email, Password)" +
-            "VALUES " + "(\'" + firstname + "\'," + "\'" + lastname +"\'," + "\'" + email +"\'," +
-        "\'" + password +"\');"
-    }
+
 
     it('should return an error on GET request', (done) => {
         chai.request(server)
@@ -145,12 +151,12 @@ describe('Login', () => {
 
     it('should return a token when providing valid information', (done) => {
         hai.request(server)
-            .get("api/login")
-                .send({
+            .post("api/login")
+            .send({
                     "email": email,
                     "password": password
                 })
-                .end((err, res)=>{
+            .end((err, res)=>{
                     res.should.have.status(200)
                     res.body.should.have.property("error")
                     validToken = res.body.token
@@ -161,7 +167,7 @@ describe('Login', () => {
 
     it('should throw an error when email does not exist', (done) => {
         chai.request(server)
-            .get("api/register")
+            .post("api/login")
             .send({
 
                 "password": password
@@ -174,7 +180,7 @@ describe('Login', () => {
 
     it('should throw an error when email exists but password is invalid', (done) => {
         chai.request(server)
-            .get("api/register")
+            .post("api/login")
             .send({
                 "email" : email,
                 "password": "test"
@@ -187,7 +193,7 @@ describe('Login', () => {
 
     it('should throw an error when using an invalid email', (done) => {
         chai.request(server)
-            .get("api/register")
+            .post("api/login")
             .send({
                 "email" : "test",
                 "password": password
@@ -197,6 +203,7 @@ describe('Login', () => {
                 res.body.should.have.property("error")})
         done()
     })
+
 
 })
 module.exports = {
