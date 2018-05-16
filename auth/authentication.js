@@ -7,11 +7,11 @@ const jwt = require('jwt-simple');
 //
 // Encode (van username naar token)
 //
-function encodeToken(username) {
+function encodeToken(email) {
     const playload = {
         exp: moment().add(10, 'days').unix(),
         iat: moment().unix(),
-        sub: username
+        sub: email
     };
     return jwt.encode(playload, settings.secretkey);
 }
