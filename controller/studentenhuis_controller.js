@@ -17,24 +17,27 @@ module.exports = {
                     sql:'INSERT INTO `studentenhuis`(`Adres`, `Naam`, `UserID`)VALUES (\'' + huis.adres + '\', \'' + huis.naam + '\', \'' + huis.userId + '\');',
                     timeout: 2000
                 };
- //query uitvoeren
+
+                //query uitvoeren
                 db.query(query, function (error, rows) {
                     if (error) {
                         res.status(400).json(error);
                     } else {
                         //insert
                         let id = rows.insertId;
- //query aanmaken
-        let query = {
-              sql: 'SELECT studentenhuis.ID, studentenhuis.Naam, studentenhuis.Adres, CONCAT(user.Voornaam, \' \', user.Achternaam) AS Contact, user.Email FROM `studentenhuis` JOIN user ON user.ID = studentenhuis.UserID WHERE studentenhuis.ID = ' + id,
-             timeout: 2000
-          };
-//query uitvoeren
-         db.query(query, function (error, rows) {
-               if (error) {
-                res.status(400).json(error);
-                } else {
-                 res.status(200).json(rows[0]);
+
+                        //query aanmaken
+                        let query = {
+                            sql: 'SELECT studentenhuis.ID, studentenhuis.Naam, studentenhuis.Adres, CONCAT(user.Voornaam, \' \', user.Achternaam) AS Contact, user.Email FROM `studentenhuis` JOIN user ON user.ID = studentenhuis.UserID WHERE studentenhuis.ID = ' + id,
+                            timeout: 2000
+                        };
+
+                        //query uitvoeren
+                        db.query(query, function (error, rows) {
+                            if (error) {
+                                res.status(400).json(error);
+                            } else {
+                                res.status(200).json(rows[0]);
              }
          });
       }
