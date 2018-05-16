@@ -1,7 +1,6 @@
 class Maaltijd {
 
-    constructor(ID, Naam, Beschrijving, Ingredienten, Allergie, Prijs){
-        this.M_ID = ID;
+    constructor(Naam, Beschrijving, Ingredienten, Allergie, Prijs){
         this.M_Naam = Naam;
         this.M_Beschrijving = Beschrijving;
         this.M_Ingredienten = Ingredienten;
@@ -10,10 +9,6 @@ class Maaltijd {
 
     }
 
-
-    getID() {
-        return this.M_ID;
-    }
 
     getNaam() {
         return this.M_Naam;
