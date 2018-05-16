@@ -5,7 +5,7 @@ class Maaltijd {
         this.M_Beschrijving = Beschrijving;
         this.M_Ingredienten = Ingredienten;
         this.M_Allergie = Allergie;
-        this._Prijs = Prijs;
+        this.M_Prijs = Prijs;
 
     }
 
@@ -28,7 +28,7 @@ class Maaltijd {
 
 
     getPrijs() {
-        return this._Prijs;
+        return this.M_Prijs;
     }
 }
 
