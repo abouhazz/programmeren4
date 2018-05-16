@@ -47,9 +47,7 @@ app.use((err, req, res, next) => {
 
     const port = process.env.PORT || 8080;
 
-app.listen(port, () => {
-    console.log('De server draait op port ' + port)
-})
+
 
 
 

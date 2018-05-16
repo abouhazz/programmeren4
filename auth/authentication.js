@@ -15,15 +15,8 @@ function encodeToken(email) {
     };
     return jwt.encode(playload, settings.secretkey);
 }
-<<<<<<< HEAD
-//
-// Decode (van token naar username)
-//
-=======
 
 
-
->>>>>>> developer
 function decodeToken(token, cb) {
 
     try {
