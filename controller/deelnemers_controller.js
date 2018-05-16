@@ -6,7 +6,9 @@ module.exports = {
         //ophalen vanuit swagger
         let huisID = request.params.huisId;
         let maaltijdID = request.params.maaltijdId;
-        //check
+
+
+
         console.log('createDeelnemer is completed \r\n' +
             "huisID: " + huisID + "maaltijdID: " + maaltijdID);
         response.status(200).end();
